@@ -11,12 +11,12 @@
   --light: #f8f9fa;
   --gray: #868e96;
   --danger: #fa5252;
-  --success: #40c057;
+  --sucess: #40c057;
   --border: #e9ecef;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f1f3f5;
   min-height: 100vh;
   display: flex;
@@ -33,18 +33,7 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 header {
@@ -77,6 +66,7 @@ header p {
   padding: 12px 15px;
   border: 1px solid #dee2e6;
   font-size: 1rem;
+  border-radius: 8px;
   transition: all 0.3s;
 }
 
@@ -89,12 +79,16 @@ header p {
 .todo-input button {
   background-color: var(--primary);
   color: white;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
 .todo-input button:hover {
@@ -141,28 +135,16 @@ header p {
   padding: 12px 15px;
   display: flex;
   align-items: center;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  animation: fadeInUp 0.3s ease;
+  transition: background-color 0.2s;
 }
 
 .todo-item:hover {
-  background-color: #f8f9fa;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background-color: #f8f0ff;
 }
 
 .checkbox-container {
   margin: 15px;
+  position: relative;
 }
 
 .todo-checkbox {
@@ -177,13 +159,13 @@ header p {
   border: 2px solid #dee2e6;
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
+  border-radius: 4px;
 }
 
 .todo-checkbox:checked + .checkmark {
-  background-color: var(--success);
-  border-color: var(--success);
-  transform: scale(1.2);
+  background-color: var(--sucess);
+  border-color: var(--sucess);
 }
 
 .todo-checkbox:checked + .checkmark::after {
@@ -234,7 +216,7 @@ header p {
   justify-content: center;
   padding: 40px 0;
   color: var(--gray);
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .empty-state i {
@@ -271,5 +253,33 @@ footer {
 
 #clear-completed:hover {
   color: var(--danger);
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 480px) {
+  .todo-input {
+    flex-direction: column;
+  }
+
+  .todo-input input,
+  .todo-input button {
+    width: 100%;
+  }
+
+  .todo-input button {
+    margin-top: 10px;
+    font-size: 16px;
+  }
 }
